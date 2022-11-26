@@ -13,17 +13,27 @@ inputEl.addEventListener('change', getAmountElements);
 btnCreate.addEventListener('click', createBoxes);
 btnDestroy.addEventListener('click', destroyBoxes);
 
-function getAmountElements() { 
-  inputEl.value
+function getAmountElements() {
+  if (inputEl.value > 100) {
+    return inputEl.value = 100;
+  }
+  
+  return inputEl.value;
 };
 
-function createBoxes() {
+function createBoxes(amoung) {
+  amoung = getAmountElements();
+  console.log(getAmountElements());
+  console.log(amoung);
+  for (let index = 0; index < amoung; index++) {
     const divEl = document.createElement('div');
-    divEl.style.width = 30 + 'px';
-    divEl.style.height = 30 + 'px';
+    divEl.style.width = 30 + 10 * index + 'px';
+    divEl.style.height = 30 + 10 * index + 'px';
     divEl.style.backgroundColor = getRandomHexColor();
   
   collection.append(divEl);
+    
+  }
 };
 
 function destroyBoxes() {
