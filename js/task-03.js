@@ -35,18 +35,19 @@ const createGallery = img => {
     return itemRef;
 };
 
-const imageGallery = images.map(img => createGallery(img)).join(' ');
+const imageGallery = images.map(img => createGallery(img));
 console.log(imageGallery);
-galleryRef.insertAdjacentHTML('afterbegin', imageGallery);
+galleryRef.append(...imageGallery);
+// galleryRef.insertAdjacentHTML('afterbegin', imageGallery);
 
-// // add styles
+// add styles
 
-// galleryRef.style.display = "flex";
-// galleryRef.style.justifyContent = 'space-between';
+galleryRef.style.display = "flex";
+galleryRef.style.justifyContent = 'space-between';
 
-// const imgItems = document.querySelectorAll('.img-gallery');
-// imgItems.forEach((el) => {
-//     el.style.width = '300px';
-//     el.style.height = '200px';
+const imgItems = document.querySelectorAll('.img-gallery');
+imgItems.forEach((el) => {
+    el.style.width = '300px';
+    el.style.height = '200px';
     
-// });
+});
