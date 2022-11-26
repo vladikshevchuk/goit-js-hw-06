@@ -1,9 +1,27 @@
-const btnForm = document.querySelector('button');
+const form = document.querySelector('button');
 
-btnForm.addEventListener('submit', onFormSubmit);
+form.addEventListener('submit', onFormSubmit);
+
 
 function onFormSubmit(event) {
     event.preventDefault();
 
-    console.log('Hello');
+    const formElements = event.currentTarget.elements;
+
+    const mail = formElements.email.value;
+    const password = formElements.password.value;
+
+    if (formElements.email.value === '' ||
+        formElements.password.value === '') {
+        return alert('заполните все поля');
+    }
+
+    const formData = {
+        mail,
+        password,
+    };
+
+    console.log(formData);
+
+    formData.reset();
 };

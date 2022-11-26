@@ -18,12 +18,35 @@ const images = [
 // Все элементы галереи должны добавляться в DOM за одну операцию вставки.
 // Добавь минимальное оформление галереи флексбоксами или гридами через CSS классы.
 
-const galleryEl = document.querySelector('.gallery');
-console.log(galleryEl);
 
-const obj = images
-  .map(image => `<li><img ulr=${image.url} alt=${image.alt}></li>`)
-  .join('');
+const galleryRef = document.getElementById('gallery');
+console.log(galleryRef);
 
-console.log(obj);
-galleryEl.insertAdjacentElement('afterbegin', obj);
+const createGallery = img => {
+    const itemRef = document.createElement('li');
+    itemRef.classList.add('item-gallery');
+
+    const imgRef = document.createElement('img');
+    imgRef.src = img.url;
+    imgRef.alt = img.alt;
+    imgRef.classList.add('img-gallery');
+
+    itemRef.append(imgRef);
+    return itemRef;
+};
+
+const imageGallery = images.map(img => createGallery(img)).join(' ');
+console.log(imageGallery);
+galleryRef.insertAdjacentHTML('afterbegin', imageGallery);
+
+// // add styles
+
+// galleryRef.style.display = "flex";
+// galleryRef.style.justifyContent = 'space-between';
+
+// const imgItems = document.querySelectorAll('.img-gallery');
+// imgItems.forEach((el) => {
+//     el.style.width = '300px';
+//     el.style.height = '200px';
+    
+// });
